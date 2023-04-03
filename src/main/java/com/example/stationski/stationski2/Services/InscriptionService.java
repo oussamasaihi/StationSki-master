@@ -1,6 +1,8 @@
 package com.example.stationski.stationski2.Services;
 
+import com.example.stationski.stationski2.Repos.InscriptionRepo;
 import com.example.stationski.stationski2.entities.Inscription;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,8 +15,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 @Service
+@RequiredArgsConstructor
 public class InscriptionService implements IInscriptionService {
-
+    private final InscriptionRepo inscriptionRepo ;
     @Override
     public List<Inscription> findAll() {
         return null;

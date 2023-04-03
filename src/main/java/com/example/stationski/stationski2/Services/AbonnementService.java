@@ -9,13 +9,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class AbonnementService implements IAbonnementService {
 
     private final AbonnementRepo abonnementRepo;
-
-    public AbonnementService(AbonnementRepo abonnementRepo) {
-        this.abonnementRepo = abonnementRepo;
-    }
 
     public List<Abonnement> findAll() {
         return abonnementRepo.findAll();

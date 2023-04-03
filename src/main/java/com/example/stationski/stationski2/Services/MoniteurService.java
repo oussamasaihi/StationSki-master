@@ -1,13 +1,16 @@
 package com.example.stationski.stationski2.Services;
 
+import com.example.stationski.stationski2.Repos.MoniteurRepo;
 import com.example.stationski.stationski2.entities.Moniteur;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
+@RequiredArgsConstructor
 public class MoniteurService implements IMoniteurService {
-
+    private final MoniteurRepo moniteurRepo ;
     @Override
     public List<Moniteur> retrieveAllMoniteurs() {
         return null;

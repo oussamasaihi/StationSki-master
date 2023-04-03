@@ -2,15 +2,17 @@ package com.example.stationski.stationski2.Services;
 
 import com.example.stationski.stationski2.Repos.PisteRepo;
 import com.example.stationski.stationski2.entities.Piste;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
+@RequiredArgsConstructor
 public class PisteService implements IpisteService {
-    @Autowired
-    private PisteRepo pisteRepo ;
+
+    private final PisteRepo pisteRepo ;
     @Override
     public List<Piste> retrieveAllPistes() {
         return null;

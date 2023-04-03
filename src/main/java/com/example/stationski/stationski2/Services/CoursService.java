@@ -2,18 +2,16 @@ package com.example.stationski.stationski2.Services;
 
 import com.example.stationski.stationski2.Repos.CoursRepo;
 import com.example.stationski.stationski2.entities.Cours;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
+@RequiredArgsConstructor
 public class CoursService implements ICoursService {
-    @Autowired
-    private CoursRepo coursRepo ;
 
-    public CoursService(CoursRepo coursRepo) {
-        this.coursRepo = coursRepo;
-    }
+    private final CoursRepo coursRepo ;
 
     @Override
     public List<Cours> retriveAllCourses() {

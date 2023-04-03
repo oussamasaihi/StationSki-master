@@ -7,29 +7,32 @@ import com.example.stationski.stationski2.entities.Abonnement;
 import com.example.stationski.stationski2.entities.Piste;
 import com.example.stationski.stationski2.entities.Skieur;
 import com.example.stationski.stationski2.entities.TypeAbonnement;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-
+@RequiredArgsConstructor
 public class SkieurService implements ISkieurService {
-    @Autowired
-    private SkieurRepo skieurRepo ;
-    @Autowired
-    private PisteRepo pisteRepo ;
-    @Autowired
-    private AbonnementRepo abonnementRepo ;
+
+    private final SkieurRepo skieurRepo ;
+
+    private final PisteRepo pisteRepo ;
+
+    private final AbonnementRepo abonnementRepo ;
     @Override
     public List<Skieur> findAll() {
         return skieurRepo.findAll();
     }
 
     @Override
+    @Transactional
     public ResponseEntity<Object> findById(Long id) {
         Skieur skieur = skieurRepo.findById(id).orElse(null);
         if (skieur != null) {
@@ -57,6 +60,7 @@ public class SkieurService implements ISkieurService {
     }
 
     @Override
+    @Transactional
     public Skieur aasignSkieurToPiste(Long numSkieur, Long numPiste) {
         Skieur skieur = skieurRepo.findById(numSkieur)
                 .orElseThrow(() -> new RuntimeException("Skieur not found"));
@@ -75,7 +79,7 @@ public class SkieurService implements ISkieurService {
     }
 
 
-
+    @Transactional
     public Skieur assignSkieurToAbonnement (Long numSkieur , Long numAbon){
 
         Skieur skieur = skieurRepo.findById(numSkieur).orElse(null);
@@ -84,6 +88,7 @@ public class SkieurService implements ISkieurService {
     }
 
     @Override
+    @Transactional
     public List<Skieur> retrieveSkiersBySubscriptionType(TypeAbonnement typeAbonnement) {
         List<Skieur> skieurs = skieurRepo.findAll();
         List<Skieur> filteredSkieurs = new ArrayList<>();
