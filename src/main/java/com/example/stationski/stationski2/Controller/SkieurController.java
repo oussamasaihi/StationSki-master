@@ -4,6 +4,7 @@ import com.example.stationski.stationski2.Services.ISkieurService;
 import com.example.stationski.stationski2.entities.Abonnement;
 import com.example.stationski.stationski2.entities.Skieur;
 import com.example.stationski.stationski2.entities.TypeAbonnement;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +13,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/skieurs")
-
+@RequiredArgsConstructor
 public class SkieurController {
-    private ISkieurService iSkieurService ;
+    private final ISkieurService iSkieurService ;
     @GetMapping
     public List<Skieur> findAll(){
         return iSkieurService.findAll() ;

@@ -2,9 +2,10 @@ package com.example.stationski.stationski2.Services;
 
 import com.example.stationski.stationski2.entities.Moniteur;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class MoniteurService implements IMoniteurService {
 
     @Override

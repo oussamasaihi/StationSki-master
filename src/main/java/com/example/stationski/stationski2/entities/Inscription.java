@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Getter
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Slf4j
-public class Inscription {
+public class Inscription implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,6 +3,7 @@ package com.example.stationski.stationski2.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @EqualsAndHashCode
 @NoArgsConstructor
-public class Abonnement {
+public class Abonnement implements Serializable {
 
     //  @OneToOne(cascade =CascadeType.ALL)
     @Id

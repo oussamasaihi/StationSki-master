@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
@@ -17,7 +18,7 @@ import java.util.Set;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Slf4j
-public class Skieur {
+public class Skieur implements Serializable {
 
 
     @Id

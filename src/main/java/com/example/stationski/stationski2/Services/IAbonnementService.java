@@ -10,4 +10,5 @@ public interface IAbonnementService {
     void update(Skieur skieur);
 
     void remove();
+    Abonnement update (Abonnement abonnement) ;
 }

@@ -3,6 +3,7 @@ package com.example.stationski.stationski2.Controller;
 import com.example.stationski.stationski2.Services.AbonnementService;
 import com.example.stationski.stationski2.Services.IAbonnementService;
 import com.example.stationski.stationski2.entities.Abonnement;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,13 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/abonnements")
+@RequiredArgsConstructor
 public class AbonnementController {
 
     private final AbonnementService abonnementService;
-
-    public AbonnementController(AbonnementService abonnementService) {
-        this.abonnementService = abonnementService;
-    }
 
     @GetMapping
     public List<Abonnement> findAll() {

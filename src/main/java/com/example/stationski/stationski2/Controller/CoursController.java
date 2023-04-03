@@ -3,6 +3,7 @@ package com.example.stationski.stationski2.Controller;
 import com.example.stationski.stationski2.Services.ICoursService;
 import com.example.stationski.stationski2.entities.Cours;
 import com.example.stationski.stationski2.entities.Skieur;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,8 +11,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Cours")
+@RequiredArgsConstructor
 public class CoursController {
-    private ICoursService iCoursService ;
+    private final ICoursService iCoursService ;
     @GetMapping
     public List<Skieur> findAll(){
         return (List<Skieur>) iCoursService.retrieveCours();

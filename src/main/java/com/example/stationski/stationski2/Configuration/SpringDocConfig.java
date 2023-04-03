@@ -20,7 +20,7 @@ public class SpringDocConfig {
                 .contact(contactAPI());
 
     }
-    
+
 
     public Contact contactAPI() {
         Contact contact = new Contact().name("Oussama")

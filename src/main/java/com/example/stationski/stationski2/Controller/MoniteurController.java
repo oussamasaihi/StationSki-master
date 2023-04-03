@@ -2,6 +2,7 @@ package com.example.stationski.stationski2.Controller;
 
 import com.example.stationski.stationski2.Services.IMoniteurService;
 import com.example.stationski.stationski2.entities.Moniteur;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,8 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/Moniteur")
+@RequiredArgsConstructor
 public class MoniteurController {
-    private IMoniteurService iMoniteurService;
+    private final IMoniteurService iMoniteurService;
 
     @GetMapping
     public Page<Moniteur> findALl() {
