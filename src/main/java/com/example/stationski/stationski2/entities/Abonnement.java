@@ -22,6 +22,7 @@ public class Abonnement implements Serializable {
     private LocalDate dateDebut;
     private LocalDate dateFin;
     private float prixAbon;
+    @Enumerated(EnumType.STRING)
     TypeAbonnement typeAbonnement ;
 
     public LocalDate getId() {
