@@ -3,6 +3,8 @@ package com.example.stationski.stationski2.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -49,7 +51,7 @@ public class Skieur implements Serializable {
     private Set<Piste> pistes;
 
 
-
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @OneToMany(mappedBy = "skieur")
     List<Inscription> inscriptionList;
 

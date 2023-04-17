@@ -21,6 +21,7 @@ public class Inscription implements Serializable {
     long numInscriprtion ;
     int numSemaine ;
 
+
     @ManyToOne
     @JoinColumn(name = "numSkieur")
     private Skieur skieur;

@@ -1,12 +1,7 @@
 package com.example.stationski.stationski2.Services;
 
-import com.example.stationski.stationski2.Repos.AbonnementRepo;
-import com.example.stationski.stationski2.Repos.PisteRepo;
-import com.example.stationski.stationski2.Repos.SkieurRepo;
-import com.example.stationski.stationski2.entities.Abonnement;
-import com.example.stationski.stationski2.entities.Piste;
-import com.example.stationski.stationski2.entities.Skieur;
-import com.example.stationski.stationski2.entities.TypeAbonnement;
+import com.example.stationski.stationski2.Repos.*;
+import com.example.stationski.stationski2.entities.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +15,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class SkieurService implements ISkieurService {
+    private final InscriptionRepo inscriptionRepo ;
+    private final CoursRepo coursRepo ;
 
     private final SkieurRepo skieurRepo ;
 
@@ -101,4 +98,35 @@ public class SkieurService implements ISkieurService {
 
         return filteredSkieurs;
     }
+
+    @Override
+    public List<Skieur> retrieveSkiersBySubscriptionTypeJPQL(TypeAbonnement typeAbonnement) {
+        return skieurRepo.retrieveSkiersBySubscriptionTypeJPQL(typeAbonnement);
+    }
+
+    @Override
+    public List<Skieur> ListeOfSkieursByCoursMoniteurJPQL(String nom) {
+        return skieurRepo.ListeOfSkieursByCoursMoniteurJPQL(nom);
+    }
+
+    @Override
+    public Skieur addSkieurAndAssignSkieurToCourse(Skieur skieur) {
+        Assert.notNull(skieur.getAbonnement(),"sub must not be null");
+        Assert.notNull(skieur.getInscriptionList(),"sub must not be null");
+        skieur.getInscriptionList().forEach(inscription -> {Assert.notNull(inscription.getCour().getNumCours(),"num cours not null");
+            Cours cours = coursRepo.findById(inscription.getCour().getNumCours()).orElse(null);
+            Assert.notNull(cours,"cours not found");
+            inscription.setCour(cours);
+            inscription.setSkieur(skieur);
+        });
+
+        skieurRepo.saveAndFlush(skieur);
+        skieur.getInscriptionList().forEach(inscription -> {
+            inscription.setSkieur(skieur);
+            inscriptionRepo.save(inscription);});
+        return skieur ;
+
+        //assert.notNull(in
+    }
+
 }

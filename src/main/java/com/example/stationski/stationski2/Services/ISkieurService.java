@@ -3,6 +3,7 @@ package com.example.stationski.stationski2.Services;
 import com.example.stationski.stationski2.Repos.SkieurRepo;
 import com.example.stationski.stationski2.entities.Skieur;
 import com.example.stationski.stationski2.entities.TypeAbonnement;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -23,5 +24,9 @@ public interface ISkieurService   {
 
     public Skieur aasignSkieurToPiste(Long numSieur , Long numPiste) ;
     public List<Skieur> retrieveSkiersBySubscriptionType(TypeAbonnement typeAbonnement);
+
+    public List<Skieur> retrieveSkiersBySubscriptionTypeJPQL(TypeAbonnement typeAbonnement);
+    List<Skieur>ListeOfSkieursByCoursMoniteurJPQL(String nom );
+    public Skieur addSkieurAndAssignSkieurToCourse(Skieur skieur) ;
 
 }
